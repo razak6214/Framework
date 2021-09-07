@@ -1,0 +1,60 @@
+package pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+import org.testng.Reporter;
+
+public class LoginPage extends BasePage
+{
+	//Declaration
+	@FindBy(id = "username")
+	private WebElement unTb;
+	
+	@FindBy(name = "pwd")
+	private WebElement pwTb;
+	
+	@FindBy(xpath = "//div[.='Login ']")
+	private WebElement loginBtn;
+	
+	@FindBy(css = "div#ServerSideErrorMessage span.errormsg")
+	private WebElement errmsg;
+	
+	@FindBy(xpath = "//nobr[contains(text(), 'actiTIME')]")
+	private WebElement version;
+
+	//initialization
+	public LoginPage(WebDriver driver) {
+		super(driver);
+		PageFactory.initElements(driver, this);
+	}
+	
+	//utilization
+	public void enterUserName(String un) {
+		unTb.clear();
+		unTb.sendKeys(un);
+	}	
+	public void enterPassword(String pwd) {
+		pwTb.clear();
+		pwTb.sendKeys(pwd);
+	}
+	public void ClickonLogin() {
+		loginBtn.click();
+	}
+	public void verifyErrormsg() {
+		verifyElement(errmsg);
+	}
+	public void verifyVersion(String eVersion) {
+		try {
+			Assert.assertEquals(version.getText(), eVersion);
+			Reporter.log("Version is matching", true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public void verifyTitle(String eTitle) {
+		
+	}
+}

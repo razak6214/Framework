@@ -1,0 +1,32 @@
+package utilities;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+
+public class Actions {
+	
+
+
+	public static void click(WebElement element)
+	{
+		ActionsUtil actions = new ActionsUtil(element);
+		ActionsUtil.click(element);
+	}
+	
+	public static void DoubleClick(WebElement element)
+	{
+		ActionsUtil actions = new ActionsUtil(element);
+		ActionsUtil.DoubleClick(element);
+	}
+	
+	public static void MovetoElement(WebElement element)
+	{
+		ActionsUtil actions = new ActionsUtil(element);
+		ActionsUtil.MovetoElement(element);
+	}
+	
+	
+	
+
+}
